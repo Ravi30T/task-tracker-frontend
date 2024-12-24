@@ -54,7 +54,8 @@ const Login = props => {
     const jwtToken = Cookies.get('jwt_token')
 
     if (jwtToken !== undefined) {
-        const {history} = this.props
+        console.log(jwtToken !== undefined)
+        const {history} = props
         history.replace('/')
     }
     
