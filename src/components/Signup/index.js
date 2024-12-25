@@ -73,7 +73,7 @@ const Signup = props => {
                 <form className='register-form' onSubmit={onSubmitRegistrationForm}>
                     <div className='email-container'>
                         <label className='email-username-password-label' htmlFor='email'> Email Address </label>
-                        <input type="text" className='email-username-password-input' value={email} onChange={(e) => setEmail(e.target.value)} id="email" placeholder='Enter your Email' required />
+                        <input type="email" className='email-username-password-input' value={email} onChange={(e) => setEmail(e.target.value)} id="email" placeholder='Enter your Email' required />
                     </div>
 
                     <div className='username-container'>
