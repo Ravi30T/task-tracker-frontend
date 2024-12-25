@@ -46,9 +46,6 @@ const Home = () => {
   };
 
   const addTask = async () => {
-    const updatedTasks = [...tasks, { ...newTask }]; // Omit taskId here
-    setTasks(updatedTasks);
-    setFilteredTasks(updatedTasks);
   
     const jwtToken = Cookies.get("jwt_token");
   
@@ -61,15 +58,20 @@ const Home = () => {
       },
       body: JSON.stringify(newTask), // Sending newTask without taskId
     };
-  
-    const response = await fetch(add_task_API, options);
-    const data = await response.json();
-  
-    if (response.ok) {
-      setIsModalOpen(false);
-      getTasks();
-    } else {
-      setErrMsg(data.message);
+    
+    if(newTask.name !== "" && newTask.description !== "" && newTask.duedate !== ""){
+      const response = await fetch(add_task_API, options);
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsModalOpen(false);
+        getTasks();
+      } else {
+        alert(data.message);
+      }
+    }
+    else{
+      alert("Please, provide all the details")
     }
   };
   
@@ -194,7 +196,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="main">
       <Navbar />
       <div className="home-container">
         <div className="new-task-filter-option-container">
