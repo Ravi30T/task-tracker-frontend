@@ -286,6 +286,7 @@ const Home = () => {
                 type="date"
                 name="duedate"
                 value={newTask.duedate}
+                placeholder="dd-mm-yyyy"
                 onChange={handleInputChange}
                 min={new Date().toISOString().split("T")[0]} // Disable past dates
               />
